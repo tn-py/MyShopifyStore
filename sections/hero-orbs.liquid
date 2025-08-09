@@ -1,0 +1,59 @@
+<div class="crypto-hero-section">
+    <section class="crypto-hero">
+        <!-- Floating Particles -->
+        <div class="floating-particles" id="particles"></div>
+
+        <!-- Sphere Container -->
+        <div class="sphere-container" id="sphereContainer">
+            <div class="sphere" id="sphere">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+            <p class="hero-subtitle">{{ section.settings.hero_subtitle }}</p>
+            <a href="{{ section.settings.cta_link }}" class="cta-button">{{ section.settings.cta_label }}</a>
+        </div>
+    </section>
+</div>
+{% schema %}
+{
+  "name": "Hero Orbs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "The Future is Decentralized"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Experience next-generation blockchain technology that powers tomorrow's digital economy"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Label",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ]
+}
+{% endschema %}

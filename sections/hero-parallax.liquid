@@ -1,0 +1,55 @@
+{% comment %}
+  This is a new section for a hero with a parallax effect.
+{% endcomment %}
+
+<div class="parallax-container">
+  <div class="parallax-background" style="background-image: url('{{ section.settings.background_image | image_url: width: 2048 }}');"></div>
+  <div class="parallax-content">
+    <h1>{{ section.settings.heading }}</h1>
+    <p>{{ section.settings.subheading }}</p>
+    {% if section.settings.cta_label != blank and section.settings.cta_link != blank %}
+      <a href="{{ section.settings.cta_link }}" class="button">{{ section.settings.cta_label }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Parallax",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Modern Shopify Themes"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Elevate your brand with our stunning, high-performance themes."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Label",
+      "default": "Explore Themes"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Parallax"
+    }
+  ]
+}
+{% endschema %}
