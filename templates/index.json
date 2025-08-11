@@ -1,20 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
-      "type": "hero-parallax",
-      "settings": {}
-    },
     "hero_orbs": {
       "type": "hero-orbs",
-      "settings": {}
+      "settings": {
+        "hero_title": "The Future is Decentralized",
+        "hero_subtitle": "Experience next-generation blockchain technology that powers tomorrow's digital economy",
+        "cta_label": "Get Started",
+        "cta_link": ""
+      }
     },
     "testimonials": {
       "type": "testimonials",
-      "settings": {}
+      "blocks": {
+        "testimonial_xYpjfd": {
+          "type": "testimonial",
+          "settings": {
+            "text": "This is the best thing since sliced bread. My life is changed forever.",
+            "author": "Happy Customer"
+          }
+        },
+        "testimonial_q34GFh": {
+          "type": "testimonial",
+          "settings": {
+            "text": "This is the best thing since sliced bread. My life is changed forever.",
+            "author": "Happy Customer"
+          }
+        },
+        "testimonial_xUjdkb": {
+          "type": "testimonial",
+          "settings": {
+            "text": "This is the best thing since sliced bread. My life is changed forever.",
+            "author": "Happy Customer"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_xYpjfd",
+        "testimonial_q34GFh",
+        "testimonial_xUjdkb"
+      ],
+      "settings": {
+        "title": "What Our Users Say"
+      }
     }
   },
   "order": [
-    "main",
     "hero_orbs",
     "testimonials"
   ]
