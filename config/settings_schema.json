@@ -57,16 +57,32 @@
     "name": "t:general.colors",
     "settings": [
       {
-        "type": "color",
-        "id": "background_color",
-        "default": "#FFFFFF",
-        "label": "t:labels.background"
+        "type": "radio",
+        "id": "color_scheme",
+        "label": "Color Scheme",
+        "options": [
+          { "value": "latte", "label": "Catppuccin Latte (Light)" },
+          { "value": "mocha", "label": "Catppuccin Mocha (Dark)" },
+          { "value": "custom", "label": "Custom" }
+        ],
+        "default": "latte"
+      },
+      {
+        "type": "header",
+        "content": "Custom Colors",
+        "info": "These settings are only used when the 'Custom' color scheme is selected."
       },
       {
         "type": "color",
-        "id": "foreground_color",
+        "id": "custom_background_color",
+        "default": "#FFFFFF",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "custom_foreground_color",
         "default": "#333333",
-        "label": "t:labels.foreground"
+        "label": "Foreground"
       },
       {
         "type": "range",

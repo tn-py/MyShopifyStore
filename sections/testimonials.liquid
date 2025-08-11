@@ -1,0 +1,181 @@
+<div class="testimonials-section">
+  <h2 class="testimonials-title">{{ section.settings.title }}</h2>
+  <div class="testimonials-grid">
+    {% for block in section.blocks %}
+      <div class="testimonial-card" style="--delay: {{ forloop.index0 }}s;">
+        <div class="testimonial-card-inner">
+          <div class="testimonial-text">"{{ block.settings.text | newline_to_br }}"</div>
+          <p class="testimonial-author">- {{ block.settings.author | escape }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What Our Users Say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Testimonial Text",
+          "default": "This is the best thing since sliced bread. My life is changed forever."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Happy Customer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.testimonials-section {
+  padding: 4rem 2rem;
+  background-color: var(--ctp-crust);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--ctp-text);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+.testimonial-card {
+  background: var(--ctp-mantle);
+  border-radius: 15px;
+  border: 1px solid var(--ctp-surface0);
+  box-shadow: 0 4px 6px -1px var(--ctp-overlay0), 0 2px 4px -2px var(--ctp-overlay0);
+  padding: 2rem;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.testimonial-card:hover {
+  transform: rotateY(var(--rotateY, 0)) rotateX(var(--rotateX, 0)) translateZ(20px);
+  border-color: var(--ctp-pink);
+  box-shadow: 0 10px 15px -3px var(--ctp-overlay1), 0 4px 6px -4px var(--ctp-overlay1);
+}
+
+.testimonial-card-inner {
+  position: relative;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ctp-subtext1);
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  font-weight: bold;
+  text-align: right;
+  color: var(--ctp-text);
+}
+
+/* Reactive glow effect */
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  background: radial-gradient(
+    circle at var(--mouseX, 50%) var(--mouseY, 50%),
+    var(--ctp-pink),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.testimonial-card:hover::before {
+  opacity: 0.1;
+}
+{% endstylesheet %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.testimonial-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+
+      card.style.setProperty('--rotateX', `${rotateX}deg`);
+      card.style.setProperty('--rotateY', `${rotateY}deg`);
+      card.style.setProperty('--mouseX', `${x}px`);
+      card.style.setProperty('--mouseY', `${y}px`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--rotateX', '0deg');
+      card.style.setProperty('--rotateY', '0deg');
+    });
+  });
+});
+</script>
+
+
+

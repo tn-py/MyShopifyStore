@@ -7,10 +7,15 @@
     "hero_orbs": {
       "type": "hero-orbs",
       "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "hero_orbs"
+    "hero_orbs",
+    "testimonials"
   ]
 }
